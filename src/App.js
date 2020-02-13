@@ -14,6 +14,7 @@ import PComponent from './Components/hoc/PComponent'
 import AutoFocusTextInput from './Components/refs/AutoFocusTextInput'
 import CheckedInput from './Components/refs/CheckedInput'
 import UserForm from './Components/formikTest/UserForm'
+import StepForm from './Components/steps/StepForm'
 
 import ROUTES, {
   RenderRoutes,
@@ -57,7 +58,8 @@ class App extends Component {
       <AutoFocusTextInput />
       <CheckedInput />
       <RenderRoutes routes={ROUTES} />
-      <UserForm/>
+      <UserForm />
+      <StepForm/>
     </div>
   );
   }

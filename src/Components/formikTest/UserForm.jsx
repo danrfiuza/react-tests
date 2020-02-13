@@ -42,7 +42,7 @@ const MyFormWithFormik = withFormik({
         **/
         console.log(values)
     },
-    isInitialValid: false,
+    isInitialValid: true,
     validateOnChange: true,
     validateOnBlur: true,
     displayName: 'LogInSchema',
