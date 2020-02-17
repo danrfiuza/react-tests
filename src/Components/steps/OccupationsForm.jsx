@@ -27,7 +27,7 @@ const MyFormWithFormik = withFormik({
         **/
         console.log(values)
     },
-    isInitialValid: true,
+    isInitialValid: false,
     validateOnChange: true,
     validateOnBlur: true,
     displayName: 'LogInSchema',
@@ -90,9 +90,6 @@ class OccupationsForm extends React.Component {
                             />
                         )
                     } />
-                    <button type="submit" >
-                        Submit
-            </button>
                 </Form>
             </Fragment>
         )

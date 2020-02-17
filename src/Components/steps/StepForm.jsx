@@ -6,7 +6,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import OccupationsForm from './OccupationsForm';
-
+import { withFormik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,14 +22,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
+
+
 function getSteps () {
   return ['Select your occupations', 'Select your conveniences', 'Set a little description about you'];
 }
 
-function getStepContent (stepIndex) {
+function getStepContent (stepIndex,professionalData) {
   switch (stepIndex) {
     case 0:
-      return (<OccupationsForm/>);
+      return (<OccupationsForm professionalData={professionalData}/>);
     case 1:
       return (<Fragment>Conveniences</Fragment>);
     case 2:
@@ -41,6 +45,13 @@ function getStepContent (stepIndex) {
 export default function StepForm () {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
+
+  const [professionalData, setProfessionalData] = React.useState({
+    occupations:  [],
+    conveniences: [],
+    description : ''
+  });
+
   const steps = getSteps();
 
   const handleNext = () => {
@@ -72,7 +83,7 @@ export default function StepForm () {
           </div>
         ) : (
             <div>
-              <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+              <Typography className={classes.instructions}>{getStepContent(activeStep,professionalData)}</Typography>
               <div>
                 <Button
                   disabled={activeStep === 0}
@@ -81,7 +92,7 @@ export default function StepForm () {
                 >
                   Back
               </Button>
-                <Button variant="contained" color="primary" onClick={handleNext}>
+                <Button variant="contained" color="primary" onClick={handleNext} >
                   {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                 </Button>
               </div>
